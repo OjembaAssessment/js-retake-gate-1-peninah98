@@ -1,42 +1,41 @@
-const paragraph = document.getElementById("myParagraph");
-const words = paragraph.innerText.toLowerCase().split(/\W+/);
+const paragraphElement = document.getElementById("myParagraph");
+const wordsArray = paragraphElement.innerText.toLowerCase().split(/\W+/);
 
 function getRandomColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const wordCount = {};
-for (const word of words) {
+const wordCountDictionary = {};
+for (const word of wordsArray) {
   if (word.trim() !== "") {
-    wordCount[word] = (wordCount[word] || 0) + 1
+    wordCountDictionary[word] = (wordCountDictionary[word] || 0) + 1;
   }
 }
 
-const wordFrequency = Object.entries(wordCount)
+const wordFrequencyArray = Object.entries(wordCountDictionary);
 
-wordFrequency.sort((a, b) => b[1] - a[1])
+wordFrequencyArray.sort((a, b) => b[1] - a[1]);
 
-const wordCloudContainer = document.getElementById("myWordCloud")
+const wordCloudContainerElement = document.getElementById("myWordCloud");
 
-let cloudHTML = ""
-const maxFontSize = 64
+let cloudHTMLString = "";
+const maxFontSizeNumber = 64;
 
-const numWordsToDisplay = 12
+const numWordsToDisplayNumber = 12;
 
-const cloudRadius = 100
-const rotationRange = 90 
+const cloudRadiusNumber = 100;
+const rotationRangeNumber = 90;
 
-for (let i = 0; i < numWordsToDisplay; i++) {
-  const [word, count] = wordFrequency[i];
-  const fontSize = maxFontSize - i * 4;
-  const wordColor = getRandomColor();
+for (let i = 0; i < numWordsToDisplayNumber; i++) {
+  const [word, count] = wordFrequencyArray[i];
+  const fontSizeNumber = maxFontSizeNumber - i * 4;
+  const wordColorString = getRandomColor();
 
-  
-  const angle = (Math.random() - 0.5) * rotationRange;
-  const x = cloudRadius * Math.cos((i / numWordsToDisplay) * Math.PI * 2 + angle);
-  const y = cloudRadius * Math.sin((i / numWordsToDisplay) * Math.PI * 2 + angle);
+  const angleNumber = (Math.random() - 0.5) * rotationRangeNumber;
+  const xNumber = cloudRadiusNumber * Math.cos((i / numWordsToDisplayNumber) * Math.PI * 2 + angleNumber);
+  const yNumber = cloudRadiusNumber * Math.sin((i / numWordsToDisplayNumber) * Math.PI * 2 + angleNumber);
 
-  cloudHTML += `<span style="font-size: ${fontSize}px; color: ${wordColor}; transform: translate(${x}px, ${y}px) rotate(${angle}deg);">${word}</span> `;
+  cloudHTMLString += `<span style="font-size: ${fontSizeNumber}px; color: ${wordColorString}; transform: translate(${xNumber}px, ${yNumber}px) rotate(${angleNumber}deg);">${word}</span> `;
 }
 
-wordCloudContainer.innerHTML = cloudHTML
+wordCloudContainerElement.innerHTML = cloudHTMLString;
