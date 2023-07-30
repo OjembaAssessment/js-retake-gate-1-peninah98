@@ -1,4 +1,19 @@
+/* Add any additional styling here if needed */
 #myWordCloud {
-    color: red;
-    font-size: 64px;
-}
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Example styling for the word cloud spans (feel free to customize) */
+  #myWordCloud span {
+    display: inline-block;
+    margin: 5px;
+    color: green;
+  }
+  
+  /* Custom styling for the biggest word */
+  .biggest-word {
+    font-weight: bold;
+    color: blue;
+  }
+  
